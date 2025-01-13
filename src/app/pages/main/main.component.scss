@@ -1,0 +1,143 @@
+.main-content {
+    padding: 40px 20px;
+    background-color: #e0f7fa;
+    color: #004d40;
+}
+
+/* Introducción */
+.intro-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro-section h1 {
+    font-size: 36px;
+    color: #004d40;
+}
+
+.intro-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-buttons a {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #004d40;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #00695c;
+}
+
+.btn-secondary {
+    background-color: #80cbc4;
+    color: #004d40;
+}
+
+.btn-secondary:hover {
+    background-color: #4db6ac;
+}
+
+/* Características */
+.features-section {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #004d40;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    background-color: #ffffff;
+    border: 1px solid #80cbc4;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);
+}
+
+.feature-item img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #004d40;
+}
+
+.feature-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666666;
+}
+
+/* Llamado a la acción */
+.cta-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #004d40;
+    color: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+
+}
+
+.cta-section:hover{
+    transform: scale(1.015);
+}
+
+.cta-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.cta-section a {
+    background-color: #80cbc4;
+    color: #004d40;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-section a:hover {
+    background-color: #4db6ac;
+}
+
+a{
+    cursor: pointer;
+}

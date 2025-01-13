@@ -1,0 +1,31 @@
+<header class="global-header-container">
+    <div class="header-container">
+        <div class="header-logo">
+            <a href="/">
+                <img src="/assets/imgs/OIP-removebg-preview.png" alt="logo" />
+            </a>
+        </div>
+        <nav class="header-menu">
+            <ul>
+                <li>
+                    <a routerLink="/home" routerLinkActive="active">Inicio</a>
+                </li>
+                <li>
+                    <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
+                </li>
+                <li>
+                    <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+        @if (isLogged) {
+            <div class="header-sesion">
+                <a routerLink="/profile" routerLinkActive="active">Cerrar Sesión</a>
+            </div>
+        } @else{
+            <div class="header-sesion">
+                <a routerLink="/login" routerLinkActive="active">Iniciar Sesión</a>
+            </div>
+        }
+    </div>
+</header>
