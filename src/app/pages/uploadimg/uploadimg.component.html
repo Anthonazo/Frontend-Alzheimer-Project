@@ -1,1 +1,21 @@
-<p>uploadimg works!</p>
+<div class="upload-container">
+    <h2>Subir Imagen</h2>
+    <p>Por favor, selecciona una imagen para subir y analizar.</p>
+    
+    <form>
+      <div class="file-input">
+        <label for="image-upload" class="custom-file-label">
+          <img src="assets/imgs/file.png" alt="Subir Imagen">
+          <span>Seleccionar Imagen</span>
+        </label>
+        <input type="file" id="image-upload" accept="image/*" (change)="onFileSelected($event)" hidden>
+      </div>
+      <button type="button" class="btn-primary" [disabled]="!selectedFile" (click)="uploadImage()">Subir Imagen</button>
+    </form>
+    
+    <div *ngIf="imagePreview" class="image-preview">
+      <p>Vista previa:</p>
+      <img [src]="imagePreview" alt="Vista previa de la imagen seleccionada">
+    </div>
+  </div>
+  
