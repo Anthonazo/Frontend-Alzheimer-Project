@@ -1,10 +1,11 @@
 <main class="welcome-panel">
     <section class="welcome-header">
-      <h1>¡Bienvenido de nuevo, [Nombre del Usuario]!</h1>
+      <h1>¡Bienvenido de nuevo, {{nombreUsuario}} !</h1>
       <p>Nos alegra tenerte de vuelta. A continuación, encontrarás tus opciones disponibles.</p>
     </section>
-  
+
     <section class="actions-section">
+      <!-- <audio  [src]="audioUrl" controls ></audio> -->
       <h2>¿Qué deseas hacer hoy?</h2>
       <div class="actions-grid">
         <div class="action-item">
@@ -24,8 +25,8 @@
           <h3>Editar Perfil</h3>
           <p>Actualiza tus datos personales o ajusta tu configuración de cuenta.</p>
           <a routerLink="/profile" class="btn-primary">Editar Perfil</a>
+
         </div>
       </div>
     </section>
   </main>
-  

@@ -23,11 +23,13 @@ export class AuthComponent{
 
   login(){
     this.loginService.login(this.user).subscribe(
-      data => {
+      (data) => {
         this.loginService.notificateLogin();
+        // const name = data.name
         localStorage.setItem('logged', 'true');
+        // localStorage.setItem('nombre', name);
         this.router.navigate(['/home']);
-      }, 
+      },
       error => {
         console.log(error);
       }

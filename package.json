@@ -18,7 +18,13 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+<<<<<<< HEAD
     "aws-sdk": "^2.1692.0",
+=======
+    "@aws-sdk/client-polly": "^3.730.0",
+    "aws-sdk": "^2.1692.0",
+    "frontend-alzheimer-prediction": "file:",
+>>>>>>> 2658e6fd30eb0aa6c69bb5e38f19d721a3592480
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

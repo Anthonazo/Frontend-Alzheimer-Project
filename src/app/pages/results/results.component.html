@@ -1,1 +1,9 @@
-<p>results works!</p>
+<div>
+  <h1>Resultados obtenidos</h1>
+  <div>
+    <textarea (ngModel)="texto" placeholder="Escribe algo"></textarea>
+    <button (click)="reproducirAudio()">Reproducir</button>
+    <audio  [src]="audioUrl" controls></audio>
+  </div>
+
+</div>
