@@ -15,7 +15,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(user: UserLogin){
-    return this.http.post(environment.url + '/login/', user);
+    return this.http.post<{email: string, name: string}>(environment.url + '/login/', user);
   }
 
   notificateLogin(){
