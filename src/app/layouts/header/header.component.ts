@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -14,11 +15,26 @@ export class HeaderComponent {
 
   isLogged = false;
 
-  constructor() { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.isLogged = localStorage.getItem('logged') ? true : false;
+    this.loginService.isLogged$.subscribe(
+      (loggedStatus) => {
+        this.isLogged = loggedStatus;
+      }
+    );
   }
+
+  logout(){
+    localStorage.removeItem('logged');
+    this.isLogged = false;
+  }
+
+  login(){
+    this.router.navigate(['/login']);
+  }
+
+  
   
 
 }
