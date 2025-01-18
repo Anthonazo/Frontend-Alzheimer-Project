@@ -21,19 +21,23 @@ export class AuthComponent{
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  login(){
+  login() {
     this.loginService.login(this.user).subscribe(
-      (data) => {
+      (data: any) => {
+        // Caso exitoso
         this.loginService.notificateLogin();
-        // const name = data.name
         localStorage.setItem('logged', 'true');
-        // localStorage.setItem('nombre', name);
+        localStorage.setItem('nombre', data.name);
         this.router.navigate(['/home']);
+        console.log(data);
       },
-      error => {
-        console.log(error);
+      (error) => {
+        // Caso de error
+        console.error('Error al iniciar sesión:', error);
+        alert('Credenciales incorrectas. Inténtelo de nuevo.');
       }
-    )
+    );
   }
+  
 
 }
