@@ -2,46 +2,48 @@
     padding: 40px 20px;
     background-color: #ffffff;
     border: 1px solid #80cbc4;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     max-width: 100%;
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Ocupa el 90% del ancho disponible */
-    max-width: 800px; /* Máximo ancho para pantallas grandes */
+    margin: 60px auto 60px; /* Añadido margen en la parte superior */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
 }
 
 .upload-container h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+    font-size: 32px;
+    margin-bottom: 20px;
     color: #004d40;
+    font-weight: 600;
 }
 
 .upload-container p {
-    font-size: 16px;
-    margin-bottom: 25px;
+    font-size: 18px;
+    margin-bottom: 30px;
     color: #666666;
 }
 
 .file-input {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .custom-file-label {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 30px;
+    padding: 18px 35px;
     background-color: #e0f7fa;
     border: 2px dashed #80cbc4;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     color: #004d40;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    font-size: 16px;
-    width: 100%; /* Ajusta al ancho completo del contenedor */
-    max-width: 600px; /* Máximo ancho para evitar que se desborde */
-    margin: 0 auto; /* Centrado horizontal */
+    font-size: 18px;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
 }
 
 .custom-file-label:hover {
@@ -50,45 +52,46 @@
 }
 
 .custom-file-label img {
-    width: 30px;
-    margin-right: 15px;
+    width: 35px;
+    margin-right: 18px;
 }
 
 .custom-file-label span {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .image-preview {
-    margin-top: 25px;
+    margin-top: 35px;
     text-align: center;
 }
 
 .image-preview p {
-    font-size: 16px;
+    font-size: 18px;
     color: #666666;
+    margin-bottom: 15px;
 }
 
 .image-preview img {
     max-width: 100%;
     height: auto;
     border: 1px solid #80cbc4;
-    border-radius: 8px;
-    margin-top: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 .btn-primary {
-    padding: 15px 30px;
+    padding: 18px 35px;
     background-color: #004d40;
     color: #ffffff;
     text-decoration: none;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s ease;
-    width: 100%; /* Botón ocupa todo el ancho disponible */
-    max-width: 400px; /* Máximo ancho del botón */
-    margin: 15px auto; /* Centrado horizontal */
+    width: 100%;
+    max-width: 420px;
+    margin: 25px auto;
 }
 
 .btn-primary:disabled {
@@ -98,4 +101,35 @@
 
 .btn-primary:hover:not(:disabled) {
     background-color: #00695c;
+}
+
+.prediction-container {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #e0f7fa;
+    border: 1px solid #80cbc4;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.prediction-container h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #004d40;
+    margin-bottom: 10px;
+}
+
+.prediction-container p {
+    font-size: 18px;
+    color: #004d40;
+    margin-bottom: 20px;
+}
+
+.prediction-container img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #80cbc4;
+    border-radius: 12px;
+    margin-top: 20px;
 }

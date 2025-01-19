@@ -1,0 +1,58 @@
+/* Container for the records */
+.records-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header title */
+  .records-container h1 {
+    font-size: 28px;
+    text-align: center;
+    color: #004d40;
+    margin-bottom: 20px;
+  }
+  
+  /* Grid layout for records */
+  .records-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Individual record card */
+  .record-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .record-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Record image */
+  .record-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Record details */
+  .record-details p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .record-details strong {
+    color: #00796b;
+  }
+  

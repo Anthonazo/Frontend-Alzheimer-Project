@@ -1,9 +1,24 @@
-<div>
-  <h1>Resultados obtenidos</h1>
-  <div>
-    <textarea (ngModel)="texto" placeholder="Escribe algo"></textarea>
-    <button (click)="reproducirAudio()">Reproducir</button>
-    <audio  [src]="audioUrl" controls></audio>
+<div class="records-container">
+  <h1>Historial de Radiografías</h1>
+  <div class="records-grid">
+    <!-- Repetir tarjeta de registro por cada elemento en history -->
+    <div class="record-card" *ngFor="let record of history">
+      <!-- Imagen base64 principal -->
+      <img
+        [src]="'data:image/jpeg;base64,' + record.imagen_base64"
+        alt="Radiografía"
+        class="record-image"
+      />
+      <div class="record-details">
+        <!-- Imagen explicativa en base64 -->
+        <img
+          [src]="'data:image/jpeg;base64,' + record.explicacion"
+          alt="Explicación"
+          class="record-image"
+        />
+        <p><strong>Fecha:</strong> {{ record.fecha_subida }}</p>
+        <p><strong>Probabilidad:</strong> {{ record.probabilidad| number:'1.0-2' }}%</p>
+      </div>
+    </div>
   </div>
-
 </div>

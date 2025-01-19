@@ -24,15 +24,14 @@ export class AuthComponent{
   login() {
     this.loginService.login(this.user).subscribe(
       (data: any) => {
-        // Caso exitoso
         this.loginService.notificateLogin();
         localStorage.setItem('logged', 'true');
         localStorage.setItem('nombre', data.name);
+        localStorage.setItem('email', data.message);
         this.router.navigate(['/home']);
         console.log(data);
       },
       (error) => {
-        // Caso de error
         console.error('Error al iniciar sesión:', error);
         alert('Credenciales incorrectas. Inténtelo de nuevo.');
       }
