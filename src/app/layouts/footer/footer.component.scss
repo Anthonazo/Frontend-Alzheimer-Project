@@ -1,9 +1,10 @@
 /* General Styles for Footer */
 .global-footer-container {
     background-color: #ffffff;
-    color: #004d40;
+    color: #333; /* Color de texto oscuro y neutro */
     padding: 30px 0;
     font-size: 14px;
+    border-top: 1px solid #e0e0e0; /* Línea suave en la parte superior */
 }
 
 .footer-container {
@@ -13,7 +14,7 @@
     margin: 0 auto;
     padding: 0 20px;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px; /* Espacio sutil entre las secciones */
 }
 
 /* Logo Section */
@@ -23,7 +24,7 @@
 }
 
 .footer-logo img {
-    width: 100px;
+    width: 80px; /* Tamaño del logo más pequeño */
     margin-bottom: 10px;
 }
 
@@ -31,6 +32,7 @@
     margin: 0;
     font-size: 14px;
     line-height: 1.6;
+    color: #666; /* Color más suave para el texto del logo */
 }
 
 /* Links Section */
@@ -42,7 +44,7 @@
 .footer-links h4 {
     font-size: 16px;
     margin-bottom: 10px;
-    color: #004d40;
+    color: #00796b; /* Verde más suave para los títulos */
 }
 
 .footer-links ul {
@@ -57,12 +59,12 @@
 
 .footer-links a {
     text-decoration: none;
-    color: #004d40;
+    color: #00796b; /* Verde suave */
     transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: #80cbc4;
+    color: #004d40; /* Oscurece el verde al pasar el ratón */
 }
 
 /* Contact Section */
@@ -74,24 +76,26 @@
 .footer-contact h4 {
     font-size: 16px;
     margin-bottom: 10px;
-    color: #e0f7fa;
+    color: #00796b; /* Verde suave para los títulos */
 }
 
 .footer-contact p {
     margin: 5px 0;
     line-height: 1.6;
+    color: #666; /* Suaviza el texto de contacto */
 }
 
 /* Bottom Section */
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
-    border-top: 1px solid #80cbc4;
+    border-top: 1px solid #e0e0e0; /* Línea suave separadora */
     padding-top: 10px;
     font-size: 13px;
+    color: #666; /* Color más suave para el texto de derechos reservados */
 }
 
-a{
+a {
     cursor: pointer;
 }
 

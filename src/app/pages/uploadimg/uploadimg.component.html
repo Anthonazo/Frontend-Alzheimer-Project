@@ -1,6 +1,15 @@
 <div class="upload-container">
-  <h2>Subir Imagen</h2>
-  <p>Por favor, selecciona una imagen para subir y analizar.</p>
+  <h2 class="section-title">Subir Imagen</h2>
+  <p class="section-description">Selecciona un paciente y sube la radiografía para su análisis. Obtendrás una predicción basada en los datos proporcionados.</p>
+
+  <div class="form-group">
+    <label for="patient-select">Seleccionar Paciente:</label>
+    <select id="patient-select" [(ngModel)]="selectedPatient" class="form-control">
+      <option *ngFor="let patient of patients" [ngValue]="patient">
+        {{ patient.name }} (Cédula: {{ patient.dni }})
+      </option>
+    </select>
+  </div>
 
   <form>
     <div class="file-input">
@@ -10,7 +19,15 @@
       </label>
       <input type="file" id="image-upload" accept="image/*" (change)="onFileSelected($event)" hidden>
     </div>
-    <button type="button" class="btn-primary" [disabled]="!selectedFile" (click)="uploadImage()">Subir Imagen</button>
+
+    <button 
+      type="button" 
+      class="btn-primary" 
+      [disabled]="!selectedFile || !selectedPatient" 
+      (click)="uploadImage()"
+    >
+      Subir Imagen
+    </button>
   </form>
 
   <div *ngIf="imagePreview" class="image-preview">
@@ -18,11 +35,9 @@
     <img [src]="imagePreview" alt="Vista previa de la imagen seleccionada">
   </div>
 
-  <!-- Gradiente con la predicción -->
   <div *ngIf="prediction" class="prediction-container">
     <h3>Predicción: {{ prediction.Prediccion }}</h3>
-    <p>Probabilidad: {{ prediction.Probabilidad| number: '1.2-2' }}%</p>
+    <p>Probabilidad: {{ prediction.Probabilidad | number: '1.0-4' }}%</p>
     <img [src]="'data:image/jpeg;base64,' + prediction.Radiografia" alt="Radiografía de la predicción">
-
   </div>
 </div>

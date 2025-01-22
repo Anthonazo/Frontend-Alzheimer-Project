@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { UserLogin } from '../../Model/user';
+import { DoctorLogin } from '../../Model/doctor';
 import { LoginService } from '../../services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -17,17 +17,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class AuthComponent{
 
-  user: UserLogin = new UserLogin();
+  doctor: DoctorLogin = new DoctorLogin();
 
   constructor(private loginService: LoginService, private router: Router) {}
 
   login() {
-    this.loginService.login(this.user).subscribe(
+    this.loginService.login(this.doctor).subscribe(
       (data: any) => {
         this.loginService.notificateLogin();
         localStorage.setItem('logged', 'true');
         localStorage.setItem('nombre', data.name);
-        localStorage.setItem('email', data.message);
+        localStorage.setItem('id', data.message);
         this.router.navigate(['/home']);
         console.log(data);
       },

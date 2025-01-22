@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { PredictService } from '../../services/predict.service';
 import { historialResponse } from '../../Model/radiography';
 import { CommonModule } from '@angular/common';
+import { Patient } from '../../Model/patient';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -14,43 +17,34 @@ import { CommonModule } from '@angular/common';
 })
 export class ResultsComponent implements OnInit{
 
-  texto: string = '';
-  audioUrl: string | null = null;
   history: historialResponse[] = [];
+  patients: Patient[] = [] 
 
-
-  constructor(private predictService: PredictService,
-     private pollyService: AwsPollyService) {}
+  constructor(private predictService: PredictService, 
+    private userService: UserService,
+    private router: Router) {}
 
   ngOnInit(): void {
-    this.getResults();
+    this.getUsers();
   }
 
-  getResults() {
-    const email = localStorage.getItem('email') ?? '';
-    this.predictService.results(email).subscribe(
-      data => {
-        if (Array.isArray(data)) {
-          this.history = data;
-          console.log('Historial:', this.history);
-        } else {
-          console.error('Los datos recibidos no son un array:', data);
-        }
-      },
-      error => {
-        console.error('Error al obtener los resultados:', error);
-      }
-    );
+  getUsers() {
+    let id = localStorage.getItem('id')!
+    this.userService.getAvaliablePatients(id).subscribe
+    (data => {
+      this.patients = data as Patient[];
+      console.log(this.patients);
+    }
+  );
   }
 
-  reproducirAudio() {
-    this.pollyService.synthesizeSpeech(this.texto)
-      .then(audioBlob => {
-        this.audioUrl = URL.createObjectURL(audioBlob);
-      })
-      .catch(error => {
-        console.error('Error al sintetizar el habla:', error);
-      });
+  viewRadiographs(patient: Patient) {
+    console.log(`Ver radiografías para el paciente:`, patient);
+    this.router.navigate(['/radiographs', patient.id], {
+      state: { patientData: patient } // Pasamos los datos del paciente
+    });
   }
+  
+
 
 }

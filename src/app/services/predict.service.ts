@@ -11,13 +11,13 @@ export class PredictService {
 
   constructor(private http: HttpClient) { }
 
-  predict(foto: any, email: string ) {
-    return this.http.post(environment.url + '/make/', { foto, email});
+  predict(foto: any, id: number ) {
+    return this.http.post(environment.url + '/make/', { foto, id});
   }
 
-  results(email: string): Observable<historialResponse[]> {
+  results(id: number): Observable<historialResponse[]> {
     return this.http.get<historialResponse[]>(environment.url + '/getRadio/', {
-      params: { email }
+      params: { id }
     });
   }
   

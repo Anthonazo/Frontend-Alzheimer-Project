@@ -8,5 +8,6 @@ export interface historialResponse {
     explicacion: string;
     fecha_subida: string;
     imagen_base64: string;
-    probabilidad?: number;
+    probabilidad: number;
+    dementia_level: string;
 }

@@ -1,15 +1,16 @@
-export class User{
+export class Doctor{
     username?: string;
     email?: string;
     password?: string;
 }
 
-export class UserLogin{
+export class DoctorLogin{
     email?: string;
     password?: string;
 }
 
-export class UpdateUser{
+export class UpdateDoctor{
     username?: string;
     email?: string;
 }
+

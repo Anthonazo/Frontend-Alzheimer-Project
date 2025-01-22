@@ -1,0 +1,34 @@
+<div class="radiographs-container">
+    <h2>Radiografías de {{ patient.name }}</h2>
+    <p><strong>DNI:</strong> {{ patient.dni }}</p>
+    <p><strong>Edad:</strong> {{ patient.age }}</p>
+    <p><strong>Correo:</strong> {{ patient.email }}</p>
+    <p><strong>Género:</strong> {{ patient.gender }}</p>
+</div>
+        <div class="records-container">
+            <h1>Historial de Radiografías</h1>
+            <div class="records-grid">
+              <!-- Repetir tarjeta de registro por cada elemento en history -->
+              <div class="record-card" *ngFor="let record of history">
+                <!-- Imagen base64 principal -->
+                 <p>Imagen Subida</p>
+                <img
+                  [src]="'data:image/jpeg;base64,' + record.imagen_base64"
+                  alt="Radiografía"
+                  class="record-image"
+                />
+                <div class="record-details">
+                  <!-- Imagen explicativa en base64 -->
+                   <p>Imagen Resultante</p>
+                  <img
+                    [src]="'data:image/jpeg;base64,' + record.explicacion"
+                    alt="Explicación"
+                    class="record-image"
+                  />
+                  <p><strong>Fecha:</strong> {{ record.fecha_subida }}</p>
+                  <p><strong>Probabilidad:</strong> {{ record.probabilidad| number:'1.0-4' }}%</p>
+                  <p><strong> Clase: </strong> {{record.dementia_level}}</p>
+                </div>
+              </div>
+            </div>
+          </div>

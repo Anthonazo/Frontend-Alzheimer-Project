@@ -2,27 +2,48 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PredictService } from '../../services/predict.service';
 import { PrediccionResponse } from '../../Model/radiography';
+import { UserService } from '../../services/user.service';
+import { Patient } from '../../Model/patient';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-uploadimg',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './uploadimg.component.html',
   styleUrl: './uploadimg.component.scss'
 })
-export class UploadimgComponent {
+export class UploadimgComponent implements OnInit {
 
   selectedFile: any = null;
   imagePreview: any = null;
   base64Content: any = null;
-  user: string = '';
   prediction: PrediccionResponse | null = null;
+  patients: Patient[] = [];
+  selectedPatient: Patient = new Patient();
 
+  constructor(private predictService: PredictService, private userService: UserService) { } 
 
-  constructor(private predictService: PredictService) { } 
+  ngOnInit(): void {
+    this.getAvaliablePatients();
+  }
 
+  
+
+  getAvaliablePatients() {
+    let id = localStorage.getItem('id')!;
+    this.userService.getAvaliablePatients(id).subscribe(
+      (data: Patient) => {
+        this.patients = data as Patient[];
+      },
+      (error) => {
+        console.error('Error al obtener los pacientes:', error);
+      }
+    );
+  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -43,18 +64,26 @@ export class UploadimgComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
+
   
   uploadImage() {
-    this.user = localStorage.getItem('email') || '';
-    this.predictService.predict(this.base64Content, this.user).subscribe(
-      (data: any) => {
-        this.prediction = data
-
-      },
-      (error) => {
-        console.error('Error al predecir:', error);
-      }
-    );
+  if (!this.selectedPatient) {
+    console.error('No se seleccionó ningún paciente.');
+    return;
   }
+  console.log('Paciente seleccionado:', this.selectedPatient);
+  this.predictService.predict(this.base64Content, this.selectedPatient.id!).subscribe(
+    (data: any) => {
+      this.prediction = data;
+      console.log('Predicción recibida:', data);
+    },
+    (error) => {
+      console.error('Error al predecir:', error);
+    }
+  );
+}
+
+
+  
 
 }

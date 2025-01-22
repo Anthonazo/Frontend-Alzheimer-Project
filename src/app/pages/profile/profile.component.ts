@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { UpdateUser, User } from '../../Model/user';
+import { UpdateDoctor, Doctor } from '../../Model/doctor';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit{
 
   password: string = '';
   confirmPassword: string = '';
-  user: UpdateUser = new UpdateUser();
+  user: UpdateDoctor = new UpdateDoctor();
   email: string = '';
 
   constructor(private userService: UserService) { }
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit{
 
   getUser(){
     let email = localStorage.getItem('email') ?? '';
-    this.userService.getUser(email).subscribe(
+    this.userService.getDoctor(email).subscribe(
       data => {
         this.user = data;
       },
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit{
   updateUser(){
       let email = localStorage.getItem('email') ?? '';
 {
-        this.userService.updateUser(this.user, email).subscribe(
+        this.userService.updateDoctor(this.user, email).subscribe(
           data => {
             console.log(data);
             this.user = data;
