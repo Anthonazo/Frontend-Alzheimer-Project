@@ -9,7 +9,7 @@
             <h1>Historial de Radiografías</h1>
             <div class="records-grid">
               <!-- Repetir tarjeta de registro por cada elemento en history -->
-              <div class="record-card" *ngFor="let record of history">
+              <div class="record-card" *ngFor="let record of history" id="content" #content>
                 <!-- Imagen base64 principal -->
                  <p>Imagen Subida</p>
                 <img
@@ -29,6 +29,10 @@
                   <p><strong>Probabilidad:</strong> {{ record.probabilidad| number:'1.0-4' }}%</p>
                   <p><strong> Clase: </strong> {{record.dementia_level}}</p>
                 </div>
+                <div>
+                  <button style="background-color: rgb(91, 156, 140); border-radius: 10px; padding: 20px; " (click)="printPdf()">Imprimir Reporte</button>
+                </div>
               </div>
+
             </div>
           </div>

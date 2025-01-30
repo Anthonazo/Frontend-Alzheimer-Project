@@ -1,12 +1,9 @@
 export const environment = {
-    url: 'http://localhost:8000',
+    url: 'http://18.212.35.215:8000',
+    //localhost
 };
 
 export const environmentAWS = {
   production: false,
-  aws: {
-    region: 'us-east-1',
-    accessKeyId: 'YOUR_ACCESS_KEY_ID',
-    secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
-  }
+
 };
