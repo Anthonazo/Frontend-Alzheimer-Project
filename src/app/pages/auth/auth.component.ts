@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { UserLogin } from '../../Model/user';
+import { DoctorLogin } from '../../Model/doctor';
 import { LoginService } from '../../services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -17,23 +17,26 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class AuthComponent{
 
-  user: UserLogin = new UserLogin();
+  doctor: DoctorLogin = new DoctorLogin();
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  login(){
-    this.loginService.login(this.user).subscribe(
-      (data) => {
+  login() {
+    this.loginService.login(this.doctor).subscribe(
+      (data: any) => {
         this.loginService.notificateLogin();
-        const name = data.name
         localStorage.setItem('logged', 'true');
-        localStorage.setItem('nombre', name);
+        localStorage.setItem('nombre', data.name);
+        localStorage.setItem('id', data.message);
         this.router.navigate(['/home']);
+        console.log(data);
       },
-      error => {
-        console.log(error);
+      (error) => {
+        console.error('Error al iniciar sesión:', error);
+        alert('Credenciales incorrectas. Inténtelo de nuevo.');
       }
-    )
+    );
   }
+
 
 }

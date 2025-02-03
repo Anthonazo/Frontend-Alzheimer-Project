@@ -13,24 +13,22 @@ import { AwsPollyService } from '../../services/aws-polly.service';
 })
 export class HomeComponent implements OnInit{
 
+  constructor(private service: AwsPollyService){
+
+  }
 
   nombreUsuario: string | null = ''
   audioUrl: string = '';
   texto: string = ''
 
-  constructor(private service: AwsPollyService){
-
-  }
-
   ngOnInit(): void {
     this.nombreUsuario = localStorage.getItem('nombre');
-    this.texto = `¡Bienvenido!, ${this.nombreUsuario}!`;
+    this.texto = `¡Bienvenido! Doctor ${this.nombreUsuario}!`;
     console.log('Llega')
     this.service.synthesizeSpeech(this.texto)
       .then(audioBlob => {
         // Crea una URL para el blob de audio
         this.audioUrl = URL.createObjectURL(audioBlob);
-
         // Reproduce el audio
         const audioElement = new Audio(this.audioUrl);
         audioElement.load();
@@ -57,4 +55,6 @@ export class HomeComponent implements OnInit{
       console.error(error)
     })
   }
+
+
 }

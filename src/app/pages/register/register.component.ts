@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { User } from '../../Model/user';
+import { Doctor } from '../../Model/doctor';
 import { FormsModule } from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
 
@@ -16,7 +16,7 @@ import { RegisterService } from '../../services/register.service';
 })
 export class RegisterComponent {
 
-  register: User = new User();
+  register: Doctor = new Doctor();
   password: string = '';
 
   constructor(private registerService: RegisterService) { }

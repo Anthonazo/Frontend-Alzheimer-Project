@@ -21,6 +21,9 @@
     "@aws-sdk/client-polly": "^3.730.0",
     "aws-sdk": "^2.1692.0",
     "frontend-alzheimer-prediction": "file:",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.2",
+    "openai": "^4.80.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

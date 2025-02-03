@@ -1,37 +1,28 @@
-/* General Section Container */
-.global-section-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-  }
-  
-  /* Auth Container */
-  .auth-container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 30px 40px;
+.register-container {
     max-width: 500px;
-    width: 100%;
+    margin: 50px auto;
+    padding: 30px;
     text-align: center;
   }
   
-  /* Title Styling */
-  .auth-form h2 {
+  .register-container h2 {
     font-size: 24px;
     color: #004d40;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  /* Form Group Styling */
+  .register-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
   .form-group {
     margin-bottom: 15px;
     text-align: left;
   }
   
-  /* Label Styling */
   label {
     font-size: 14px;
     color: #004d40;
@@ -39,14 +30,13 @@
     display: inline-block;
   }
   
-  /* Input Field Styling */
   .form-control {
     width: 100%;
     padding: 10px;
-    font-size: 14px;
     border: none;
     border-bottom: 2px solid #80cbc4;
     background: transparent;
+    font-size: 14px;
     color: #004d40;
     outline: none;
     transition: border-color 0.3s ease;
@@ -56,7 +46,6 @@
     border-color: #00695c;
   }
   
-  /* Submit Button Styling */
   .btn-primary {
     padding: 12px 24px;
     background-color: #004d40;
@@ -73,32 +62,5 @@
   
   .btn-primary:hover {
     background-color: #00695c;
-  }
-  
-  /* Link Styles */
-  .auth-links {
-    margin-top: 20px;
-  }
-  
-  .auth-links a {
-    font-size: 14px;
-    color: #00796b;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .auth-links a:hover {
-    color: #004d40;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 600px) {
-    .auth-container {
-      padding: 20px;
-    }
-  
-    .btn-primary {
-      font-size: 14px;
-    }
   }
   

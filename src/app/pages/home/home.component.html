@@ -1,13 +1,19 @@
 <main class="welcome-panel">
     <section class="welcome-header">
-      <h1>¡Bienvenido de nuevo, {{nombreUsuario}} !</h1>
+      <h1>¡Bienvenido de nuevo, Dr. {{nombreUsuario}} !</h1>
       <p>Nos alegra tenerte de vuelta. A continuación, encontrarás tus opciones disponibles.</p>
     </section>
 
     <section class="actions-section">
-      <!-- <audio  [src]="audioUrl" controls ></audio> -->
       <h2>¿Qué deseas hacer hoy?</h2>
       <div class="actions-grid">
+        <div class="action-item">
+          <img src="assets/imgs/clipboard.png" alt="Perfil">
+          <h3>Registrar Usuario</h3>
+          <p>Registra usuarios para tener un registro detallado de radiografias.</p>
+          <a routerLink="/registeruser" class="btn-primary">Editar Perfil</a>
+
+        </div>
         <div class="action-item">
           <img src="assets/imgs/file.png" alt="Subir Archivo">
           <h3>Subir Archivos</h3>

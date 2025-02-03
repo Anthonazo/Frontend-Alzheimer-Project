@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../Model/user';
+import { Doctor } from '../Model/doctor';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  register(user: User){
-    return this.http.post(environment.url+'/createuser/', user);
+  register(doctor: Doctor){
+    return this.http.post(environment.url+'/createuser/', doctor);
   }
 }

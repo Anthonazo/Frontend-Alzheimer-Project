@@ -5,24 +5,43 @@
                 <img src="/assets/imgs/OIP-removebg-preview.png" alt="logo" />
             </a>
         </div>
-        <nav class="header-menu">
-            <ul>
-                <li>
-                    <a routerLink="/main" routerLinkActive="active">Inicio</a>
-                </li>
-                <li>
-                    <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
-                </li>
-                <li>
-                    <a routerLink="/contact" routerLinkActive="active">Contacto</a>
-                </li>
-            </ul>
-        </nav>
         @if (isLogged) {
+            <nav class="header-menu">
+                <ul>
+                    <li>
+                        <a routerLink="/home" routerLinkActive="active">Inicio</a>
+                    </li>
+                    <li>
+                        <a routerLink="/registeruser" routerLinkActive="active">Registrar Usuario</a>
+                    </li>
+                    <li>
+                        <a routerLink="/upload" routerLinkActive="active">Prediccion</a>
+                    </li>
+                    <li>
+                        <a routerLink="/results" routerLinkActive="active">Historial</a>
+                    </li>
+                    <li>
+                        <a routerLink="/profile" routerLinkActive="active">Perfil</a>
+                    </li>
+                </ul>
+            </nav>
             <div class="header-sesion">
-                <a routerLink="/profile" routerLinkActive="active" (click)="logout()" >Cerrar Sesión</a>
+                <a routerLink="/main" routerLinkActive="active" (click)="logout()" >Cerrar Sesión</a>
             </div>
         } @else{
+            <nav class="header-menu">
+                <ul>
+                    <li>
+                        <a routerLink="/main" routerLinkActive="active">Inicio</a>
+                    </li>
+                    <li>
+                        <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
             <div class="header-sesion">
                 <a routerLink="/login" routerLinkActive="active" (click)="login()">Iniciar Sesión</a>
             </div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserLogin } from '../Model/user';
+import { DoctorLogin } from '../Model/doctor';
 import { environment } from '../../environments/environment.development';
 import { BehaviorSubject } from 'rxjs';
 
@@ -14,8 +14,8 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(user: UserLogin){
-    return this.http.post<{email: string, name: string}>(environment.url + '/login/', user);
+  login(doctor: DoctorLogin){
+    return this.http.post(environment.url + '/login/', doctor);
   }
 
   notificateLogin(){

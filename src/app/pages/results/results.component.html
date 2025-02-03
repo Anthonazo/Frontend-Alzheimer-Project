@@ -1,9 +1,17 @@
-<div>
-  <h1>Resultados obtenidos</h1>
-  <div>
-    <textarea (ngModel)="texto" placeholder="Escribe algo"></textarea>
-    <button (click)="reproducirAudio()">Reproducir</button>
-    <audio  [src]="audioUrl" controls></audio>
-  </div>
+<div class="patient-cards-section">
+  <h2 class="section-title">Usuarios Registrados</h2>
+  <p class="section-description">
+    A continuación, se muestran las tarjetas de los usuarios registrados. Selecciona un usuario para visualizar sus radiografías asignadas.
+  </p>
 
+  <div class="patient-cards-container">
+    <div class="patient-card" *ngFor="let patient of patients">
+      <h3>{{ patient.name }}</h3>
+      <p><strong>DNI:</strong> {{ patient.dni }}</p>
+      <p><strong>Edad:</strong> {{ patient.age }}</p>
+      <p><strong>Correo:</strong> {{ patient.email }}</p>
+      <p><strong>Género:</strong> {{ patient.gender }}</p>
+      <button class="btn-primary" (click)="viewRadiographs(patient)">Ver Radiografías</button>
+    </div>
+  </div>
 </div>

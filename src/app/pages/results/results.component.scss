@@ -1,0 +1,88 @@
+/* Sección principal */
+.patient-cards-section {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: 80vh;
+}
+
+/* Título de la sección */
+.section-title {
+  font-size: 24px;
+  color: #004d40;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Descripción de la sección */
+.section-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de tarjetas */
+.patient-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Tarjetas individuales */
+.patient-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  width: 280px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Nombre del paciente */
+.patient-card h3 {
+  font-size: 20px;
+  color: #004d40;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Detalles del paciente */
+.patient-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 6px 0;
+}
+
+/* Resaltar etiquetas */
+.patient-card p strong {
+  color: #004d40;
+  font-weight: 500;
+}
+
+/* Botón principal */
+.btn-primary {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #004d40;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #00796b;
+}
