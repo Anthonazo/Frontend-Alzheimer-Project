@@ -15,8 +15,9 @@ export class ChatgptService {
 
 
 
-  chatgpt(probabilidad: any, clase: any): Promise<string> {
+  chatgpt( recordId: number, probabilidad: any, clase: any): Promise<string> {
     const json = {
+      "id": recordId,
       "demencia": probabilidad,
       "probabilidad": clase
     };

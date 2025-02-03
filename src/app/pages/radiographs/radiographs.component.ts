@@ -4,9 +4,6 @@ import { Router } from '@angular/router';
 import { PredictService } from '../../services/predict.service';
 import { historialResponse } from '../../Model/radiography';
 import { CommonModule } from '@angular/common';
-//import * as jsPDF from 'jspdf';
-import html2canva from 'html2canvas'
-
 import {jsPDF} from 'jspdf';
 import { ChatgptService } from '../../services/chatgpt.service';
 
@@ -19,6 +16,7 @@ import { ChatgptService } from '../../services/chatgpt.service';
 })
 export class RadiographsComponent implements OnInit {
 
+  responses: { [key: number]: string } = {}; // Almacenar las respuestas por ID
   patient: Patient = new Patient();
   history: historialResponse[] = [];
   userPrompt: string = '';
@@ -40,6 +38,7 @@ export class RadiographsComponent implements OnInit {
     this.predictService.results(this.patient.id!).subscribe(
       data => {
         this.history = data;
+        console.log(this.history);
       }
     );
   }
@@ -47,91 +46,41 @@ export class RadiographsComponent implements OnInit {
   sendResults() {
     this.router.navigate(['/results']);
   }
+  
+  async processHistory(recordId: number) {
+    try {
+      // Encuentra el registro correspondiente
+      const record = this.history.find(r => r.id === recordId);
+      if (record) {
+        console.log("Esperando respuesta para:", record.probabilidad, record.dementia_level);
+        
+        // Obtener respuesta de ChatGPT
+        this.responses[recordId] = await this.chat.chatgpt(recordId, record.probabilidad, record.dementia_level);
+        
+        console.log("Respuesta obtenida:", this.responses[recordId]);
 
-  async printPdf() {
-    const pdf = new jsPDF('p', 'pt', 'a4');
-    const pageHeight = pdf.internal.pageSize.height; // Altura total del PDF
-    const margin = 20;
-    const maxWidth = 500; // Ancho máximo del texto
-    let y = margin;
-
-    for (const record of this.history) {
-      if (y > pageHeight - 50) {
-        pdf.addPage();
-        y = margin;
+        // Mostramos la respuesta poco a poco
+        this.showResponseProgressively(recordId);
       }
-
-      pdf.setFont('helvetica', 'bold');
-      pdf.setFontSize(18);
-      pdf.text('Reporte', margin, y);
-      y += 30;
-
-      pdf.setFontSize(14);
-      pdf.text(`Registro ${this.history.indexOf(record) + 1}`, margin, y);
-      y += 20;
-
-      pdf.setFontSize(12);
-      pdf.text('Radiografía del paciente:', margin, y);
-      y += 10;
-
-      if (record.imagen_base64) {
-        pdf.addImage(`data:image/jpeg;base64,${record.imagen_base64}`, 'JPEG', margin, y, 200, 200);
-        y += 230;
-      }
-
-      pdf.text('Tejido del cerebro que se usó para determinar:', margin, y);
-      y += 10;
-
-      if (record.explicacion) {
-        pdf.addImage(`data:image/jpeg;base64,${record.explicacion}`, 'JPEG', margin, y, 200, 200);
-        y += 210;
-      }
-
-      pdf.text(`Fecha: ${record.fecha_subida}`, margin, y);
-      y += 30;
-
-      pdf.text(`Probabilidad: ${record.probabilidad ? Number(record.probabilidad).toFixed(4) : 'N/A'}%`, margin, y);
-      y += 30;
-
-      pdf.text(`Tipo probable: ${record.dementia_level}`, margin, y);
-      y += 45;
-
-      // 🔴 Esperar la respuesta de `chatgpt` y pausar por 5 segundos antes de seguir
-      try {
-        console.log("Esperando respuesta...");
-        this.response = await this.chat.chatgpt(record.probabilidad, record.dementia_level);
-        console.log("Respuesta obtenida:", this.response);
-
-        await new Promise(resolve => setTimeout(resolve, 8000));
-
-        // 📌 DIVIDIR EL TEXTO LARGO EN LÍNEAS AUTOMÁTICAMENTE
-        const wrappedText = pdf.splitTextToSize(this.response, maxWidth);
-
-        // 📌 CONTROLAR QUE NO SE SOBREPASE EL PDF
-        wrappedText.forEach((line:any) => {
-          if (y + 20 > pageHeight - 50) {  // Si se está por salir de la página
-            pdf.addPage();
-            y = margin;
-          }
-          pdf.text(line, margin, y);
-          y += 15; // Espaciado entre líneas
-        });
-
-      } catch (error) {
-        console.error('Error en la generación del reporte:', error);
-        pdf.text('Reporte: Error al generar el reporte', margin, y);
-        y += 45;
-      }
-
-      if (this.history.indexOf(record) < this.history.length - 1) {
-        pdf.setDrawColor(200);
-        pdf.line(margin, y, pdf.internal.pageSize.width - margin, y);
-        y += 65;
-      }
+    } catch (error) {
+      console.error("Error en la comunicación con ChatGPT:", error);
+      this.showResponseProgressively(recordId); // Mostrar mensaje de error también de manera progresiva
     }
-
-    pdf.save('Reporte.pdf');
   }
 
+  showResponseProgressively(recordId: number) {
+    let i = 0;
+    const response = this.responses[recordId]; // Obtener la respuesta específica para el recordId
+    this.responses[recordId] = '';  // Resetear la respuesta para ese recordId
+
+    const intervalId = setInterval(() => {
+        if (i < response.length) {
+            this.responses[recordId] += response.charAt(i); // Agregar un carácter a la vez
+            i++;
+        } else {
+            clearInterval(intervalId); // Detenemos el intervalo cuando ya no hay más caracteres
+        }
+    }, 20); // El tiempo entre cada letra es de 50 ms
+  }
 
 }

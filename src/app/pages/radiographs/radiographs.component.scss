@@ -103,3 +103,39 @@
     font-weight: 500;
 }
 
+/* Contenedor de los mensajes */
+.message-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Mensajes de error */
+.message-container p {
+    font-weight: 500;
+    color: #004d40;
+    white-space: pre-line; /* Asegura que los saltos de línea sean respetados */
+}
+
+.btn-primary {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #004d40;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #00796b;
+  }
+  
